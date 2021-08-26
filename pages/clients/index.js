@@ -1,8 +1,21 @@
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Clients() {
-  const router = useRouter();
-  console.log(router.query);
-  
-  return <h2>Clients</h2>;
+  const clients = [
+    {id: 'biel', name: 'Gabriel'},
+    {id: 'nicole', name: 'Nicole'}
+  ]
+
+  return (
+    <>
+      <h1>Clients:</h1>
+      <ul>
+        {clients.map(client => (
+          <li key={client.id}>
+            <Link href={`/clients/${client.id}`}>{client.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 }
